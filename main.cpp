@@ -13,10 +13,22 @@ float offsetPH = 0.15;
 // Index kualitas
 string indexTDS, indexNTU, indexPH, indexTemp, indexTotal;
 
+void opening()
+{
+    cout << "\n\n";
+    cout << "=================  A Q U A L Y Z E R  ======================\n";
+    cout << "            Smart Water Quality Index Analyzer System         \n";
+    cout << "--------------------------------------------------------------\n";
+    cout << "   Memproses :  TDS  |  Turbidity  |  pH  |  Temperature      \n";
+    cout << "   Output    :  Nilai pembacaan dan status kelayakan air      \n";
+    cout << "--------------------------------------------------------------\n";
+    cout << "   Silahkan masukkan tegangan sensor sesuai pembacaan Anda.   \n";
+    cout << "==============================================================\n\n";
+}
+
 // ===== FUNGSI INPUT =====
 void inputData()
 {
-    cout << "=== INPUT TEGANGAN SENSOR SECARA MANUAL ===\n";
     cout << "\n";
     cout << "Tegangan TDS (V)        : ";
     cin >> voltageTDS;
@@ -130,10 +142,10 @@ void tampilkanHasil()
 // ====== MAIN =====
 int main()
 {
-
-    inputData();      // ambil input
-    hitung();         // proses
-    tampilkanHasil(); // output
+    opening();        // Opening / Intro
+    inputData();      // Input data
+    hitung();         // Proses perhitungan
+    tampilkanHasil(); // Output hasil
 
     return 0;
 }
