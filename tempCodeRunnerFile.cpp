@@ -22,8 +22,7 @@ void opening()
 }
 
 // ===== FUNGSI INPUT =====
-void inputData()
-{
+void inputData() {
     // --- Input untuk TDS ---
     cout << "Tegangan A (TDS) : ";
     cin >> voltA_TDS;
@@ -45,8 +44,7 @@ void inputData()
 }
 
 // ===== PERHITUNGAN =====
-void hitung()
-{
+void hitung() {
     // ======== 1. TDS (rumus baru) =========
     float tdsValue = ((voltA_TDS - voltB_TDS) * 1000) / sampelML;
     hasil[0][0] = tdsValue;
@@ -67,46 +65,33 @@ void hitung()
     // ======== PENILAIAN BERDASARKAN STANDAR WHO ========
 
     // --- TDS ---
-    if (tdsValue <= 300)
-        indexTDS = "Layak";
-    else if (tdsValue <= 1000)
-        indexTDS = "Warning";
-    else
-        indexTDS = "Tidak Layak";
+    if (tdsValue <= 300) indexTDS = "Layak";
+    else if (tdsValue <= 1000) indexTDS = "Warning";
+    else indexTDS = "Tidak Layak";
 
     // --- NTU WHO ---
-    if (NTU < 5)
-        indexNTU = "Layak (Jernih)";
-    else
-        indexNTU = "Tidak Layak (Keruh)";
+    if (NTU < 5) indexNTU = "Layak (Jernih)";
+    else indexNTU = "Tidak Layak (Keruh)";
 
     // --- pH WHO: 6.5 – 8.5 ---
-    if (voltPH >= 6.5 && voltPH <= 8.5)
-        indexPH = "Layak";
-    else
-        indexPH = "Tidak Layak";
+    if (voltPH >= 6.5 && voltPH <= 8.5) indexPH = "Layak";
+    else indexPH = "Tidak Layak";
 
-    // --- SUHU WHO: 15 – 30 °C ---
-    if (voltTemp >= 15 && voltTemp <= 30)
-        indexTemp = "Layak";
-    else
-        indexTemp = "Tidak Layak";
+    // --- SUHU WHO: 20 – 30 °C ---
+    if (voltTemp >= 20 && voltTemp <= 30) indexTemp = "Layak";
+    else indexTemp = "Tidak Layak";
 
     // --- Total ---
     if (indexTDS == "Layak" && indexNTU.find("Layak") != string::npos &&
-        indexPH == "Layak" && indexTemp == "Layak")
-    {
+        indexPH == "Layak" && indexTemp == "Layak") {
         indexTotal = "AIR LAYAK DIGUNAKAN";
-    }
-    else
-    {
+    } else {
         indexTotal = "AIR TIDAK LAYAK";
     }
 }
 
 // ===== OUTPUT =====
-void tampilkanHasil()
-{
+void tampilkanHasil() {
     cout << "\n=================================================================\n";
     cout << "                HASIL EVALUASI KUALITAS AIR\n";
     cout << "=================================================================\n";
